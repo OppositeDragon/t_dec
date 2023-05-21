@@ -14,16 +14,12 @@ class SubmodulesWidget extends ConsumerWidget {
       elevation: 0,
       width: 220,
       child: FocusTraversalGroup(
-        child: Column(
-          children: [
-            for (int i = 0; i < modulesState.submodules.length; i++)
-              ListTile(
-                title: Text(modulesState.submodules.elementAt(i).label),
-                onTap: () {
-                  ref.read(submodulesControllerProvider.notifier).activateSubmodule(i);
-                },
-              ),
-          ],
+        child: ListView.builder(
+          itemCount: modulesState.submodules.length,
+          itemBuilder: (context, index) => ListTile(
+            title: Text(modulesState.submodules.elementAt(index).label),
+            onTap: () => ref.read(submodulesControllerProvider.notifier).activateSubmodule(index),
+          ),
         ),
       ),
     );
