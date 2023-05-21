@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:t_dec/constants/theme_constants.dart';
 
 import 'controllers/router.dart';
 
@@ -13,8 +14,8 @@ class MainApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp.router(
-      themeMode: ThemeMode.dark,
-      darkTheme: ThemeData.dark(useMaterial3: true),
+      theme: lightTheme,
+      darkTheme: darkTheme,
       routerConfig: ref.watch(routerProvider),
     );
   }
