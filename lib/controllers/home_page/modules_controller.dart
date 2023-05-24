@@ -83,6 +83,18 @@ class MainContentController extends _$MainContentController {
     submodules.insert(newIndex, item);
     state = state.copyWith(activeSubmodules: submodules.toSet(), activeSubmoduleIndex: newIndex);
   }
+
+  void removeSubmodule(int index) {
+    final submoduleToRemove = state.activeSubmodules.elementAt(index);
+    state = state.copyWith(
+      activeSubmoduleIndex:
+          index < state.activeSubmoduleIndex ? state.activeSubmoduleIndex - 1 : state.activeSubmoduleIndex,
+      activeSubmodules: {
+        for (final sm in state.activeSubmodules)
+          if (sm != submoduleToRemove) sm
+      },
+    );
+  }
 }
 
 @freezed

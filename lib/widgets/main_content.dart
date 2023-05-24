@@ -72,7 +72,7 @@ class _MainContentWidgetState extends ConsumerState<MainContentWidget> {
                             const SizedBox(width: 20),
                             InkWell(
                                 hoverColor: Theme.of(context).colorScheme.errorContainer,
-                                onTap: () {},
+                                onTap: () =>ref.read(mainContentControllerProvider.notifier).removeSubmodule(index),
                                 child: const Icon(Icons.close)),
                           ],
                         ),
