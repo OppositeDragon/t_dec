@@ -88,7 +88,7 @@ class MainContentController extends _$MainContentController {
     final submoduleToRemove = state.activeSubmodules.elementAt(index);
     state = state.copyWith(
       activeSubmoduleIndex:
-          index < state.activeSubmoduleIndex ? state.activeSubmoduleIndex - 1 : state.activeSubmoduleIndex,
+          index <= state.activeSubmoduleIndex ? state.activeSubmoduleIndex - 1 : state.activeSubmoduleIndex,
       activeSubmodules: {
         for (final sm in state.activeSubmodules)
           if (sm != submoduleToRemove) sm
