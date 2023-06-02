@@ -1,5 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:t_dec_bad/pages/maestro_empleados.dart';
+import 'package:t_dec_bad/pages/reportes_empleados.dart';
 
 void main() {
   runApp(const MainApp());
@@ -13,7 +15,7 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
-  final bool _showDrawer = true;
+  bool _showDrawer = true;
   int _railIndex = 0;
 
   Set<Submodule> activeSubmodules = {};
@@ -124,6 +126,9 @@ class _MainAppState extends State<MainApp> {
                           selectedIndex: _railIndex,
                           onDestinationSelected: (int index) {
                             setState(() {
+                              if (_railIndex == index) {
+                                _showDrawer = !_showDrawer;
+                              }
                               _railIndex = index;
                             });
                           },
@@ -261,12 +266,15 @@ class _MainAppState extends State<MainApp> {
 }
 
 final Set<Module> modulesSet = {
+  Module(label: 'Empleados', icon: Icons.badge_outlined, selectedIcon: Icons.badge),
   Module(label: 'Usuarios', icon: Icons.person_outline, selectedIcon: Icons.person),
   Module(label: 'Cuentas', icon: Icons.account_balance_outlined, selectedIcon: Icons.account_balance),
   Module(label: 'Documentos', icon: Icons.document_scanner_outlined, selectedIcon: Icons.document_scanner),
 };
 
 final Set<Submodule> submodulesSet = {
+  Submodule(moduleLabel: 'Empleados', label: 'Maestro', child: const MaestroEmpleadosPage()),
+  Submodule(moduleLabel: 'Empleados', label: 'Reportes', child: const ReportesEmpleadosPage()),
   Submodule(moduleLabel: 'Usuarios', label: 'Listar', child: const Text('Listar usuarios')),
   Submodule(moduleLabel: 'Usuarios', label: 'Crear', child: const Text('Crear usuarios')),
   Submodule(moduleLabel: 'Usuarios', label: 'Editar Permisos', child: const Text('Editar permisos')),
