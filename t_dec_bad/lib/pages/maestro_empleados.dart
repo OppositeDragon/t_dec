@@ -1838,16 +1838,6 @@ class _MaestroEmpleadosPageState extends State<MaestroEmpleadosPage> {
                                     SizedBox(width: 16.0),
                                   ],
                                 ),
-                                const SizedBox(height: 8),
-                                Row(
-                                  children: [
-                                    const Spacer(),
-                                    const Text('Califica para fondo de reserva: '),
-                                    const SizedBox(width: 8),
-                                    Switch(value: true, onChanged: (bool value) {}),
-                                    const SizedBox(width: 16.0),
-                                  ],
-                                ),
                                 const SizedBox(height: 24),
                                 Expanded(
                                   child: Stack(
@@ -2279,7 +2269,6 @@ class _MaestroEmpleadosPageState extends State<MaestroEmpleadosPage> {
                                 ],
                               ),
                             ),
-                            
                           ],
                         ),
                       ),
