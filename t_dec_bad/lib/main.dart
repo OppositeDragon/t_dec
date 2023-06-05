@@ -128,7 +128,9 @@ class _MainAppState extends State<MainApp> {
                             setState(() {
                               if (_railIndex == index) {
                                 _showDrawer = !_showDrawer;
+                                return;
                               }
+                              _showDrawer = true;
                               _railIndex = index;
                             });
                           },
@@ -232,7 +234,7 @@ class _MainAppState extends State<MainApp> {
                                               _activeSubmoduleIndex = index <= _activeSubmoduleIndex
                                                   ? _activeSubmoduleIndex - 1
                                                   : _activeSubmoduleIndex;
-																									if(_activeSubmoduleIndex<0) _activeSubmoduleIndex = 0;
+                                              if (_activeSubmoduleIndex < 0) _activeSubmoduleIndex = 0;
                                             });
                                           },
                                           child: const Icon(Icons.close)),
