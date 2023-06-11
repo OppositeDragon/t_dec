@@ -16,7 +16,7 @@ class _ReportesEmpleadosPageState extends State<ReportesEmpleadosPage> {
       SliverPadding(
         padding: const EdgeInsets.all(12),
         sliver: SliverToBoxAdapter(
-          child: Text('Maestro Empleados', style: textTheme.displaySmall),
+          child: Text('Reportes Empleados', style: textTheme.displaySmall),
         ),
       ),
       SliverPadding(
