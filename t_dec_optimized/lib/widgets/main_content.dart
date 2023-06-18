@@ -75,6 +75,7 @@ class _MainContentWidgetState extends ConsumerState<MainContentWidget> {
                                 hoverColor: Theme.of(context).colorScheme.errorContainer,
                                 onTap: () =>ref.read(mainContentControllerProvider.notifier).removeSubmodule(index),
                                 child: const Icon(Icons.close)),
+																
                           ],
                         ),
                       ),
