@@ -4,7 +4,7 @@ import 'package:t_dec_optimized/constants/numeric.dart';
 class FmSwitch extends StatelessWidget {
   const FmSwitch({
     super.key,
-    this.onChanged,
+    required this.onChanged,
     required this.primaryText,
     this.secondaryText,
     required this.value,

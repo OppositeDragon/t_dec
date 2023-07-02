@@ -13,8 +13,8 @@ class Fm2Layout extends StatelessWidget {
           children: [
             for (final child in (layoutDescription as SimpleLayout).children)
               Flexible(
-                flex: child.$2,
-                child: child.$1,
+                flex: child.$1,
+                child: child.$2,
               )
           ],
         );
@@ -23,8 +23,8 @@ class Fm2Layout extends StatelessWidget {
           children: [
             for (final child in (layoutDescription as SimpleLayout).children)
               Flexible(
-                flex: child.$2,
-                child: child.$1,
+                flex: child.$1,
+                child: child.$2,
               )
           ],
         );
@@ -33,13 +33,13 @@ class Fm2Layout extends StatelessWidget {
           children: [
             for (final child in (layoutDescription as ComplexLayout).children)
               Flexible(
-                flex: child.$2,
+                flex: child.$1,
                 child: Column(
                   children: [
-                    for (final innerChild in (child.$1))
+                    for (final innerChild in (child.$2))
                       Flexible(
-                        flex: innerChild.$2,
-                        child: innerChild.$1,
+                        flex: innerChild.$1,
+                        child: innerChild.$2,
                       )
                   ],
                 ),
@@ -51,13 +51,13 @@ class Fm2Layout extends StatelessWidget {
           children: [
             for (final child in (layoutDescription as ComplexLayout).children)
               Flexible(
-                flex: child.$2,
+                flex: child.$1,
                 child: Row(
                   children: [
-                    for (final innerChild in child.$1)
+                    for (final innerChild in child.$2)
                       Flexible(
-                        flex: innerChild.$2,
-                        child: innerChild.$1,
+                        flex: innerChild.$1,
+                        child: innerChild.$2,
                       )
                   ],
                 ),

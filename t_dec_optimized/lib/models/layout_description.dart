@@ -9,7 +9,7 @@ abstract class LayoutDescription {
 class SimpleLayout implements LayoutDescription {
   @override
   late Layout layout;
-  List<(Widget, int)> children;
+  List<(int,Widget)> children;
   SimpleLayout({required this.layout, required this.children})
       : assert(
           children.isNotEmpty,
@@ -24,14 +24,14 @@ class SimpleLayout implements LayoutDescription {
 class ComplexLayout implements LayoutDescription {
   @override
   late Layout layout;
-  List<(List<(Widget, int)>, int)> children;
+  List<(int,List<(int,Widget)> )> children;
   ComplexLayout({required this.layout, required this.children})
       : assert(
           children.isNotEmpty,
           'At least one child is required.',
         ),
         assert(
-          children.any((element) => element.$1.isNotEmpty),
+          children.any((element) => element.$2.isNotEmpty),
           'At least one child is required on each list.',
         ),
         assert(
