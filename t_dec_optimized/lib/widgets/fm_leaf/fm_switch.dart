@@ -21,11 +21,9 @@ class FmSwitch extends StatelessWidget {
       title: secondaryText == null
           ? Text(primaryText)
           : Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(primaryText),
-                Flexible(
-                  child: ConstrainedBox(constraints: const BoxConstraints(minWidth: sm)),
-                ),
                 Text(secondaryText!),
               ],
             ),

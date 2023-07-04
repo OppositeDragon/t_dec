@@ -11,7 +11,6 @@ final lightTheme = FlexThemeData.light(
     blendOnColors: false,
     useM2StyleDividerInM3: true,
   ),
-  visualDensity: FlexColorScheme.comfortablePlatformDensity,
   useMaterial3: true,
 );
 final darkTheme = FlexThemeData.dark(
@@ -24,6 +23,5 @@ final darkTheme = FlexThemeData.dark(
     blendOnLevel: 20,
     useM2StyleDividerInM3: true,
   ),
-  visualDensity: FlexColorScheme.comfortablePlatformDensity,
-  useMaterial3: true,
+ useMaterial3: true,
 );
