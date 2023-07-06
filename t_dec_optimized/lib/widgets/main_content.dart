@@ -45,8 +45,7 @@ class _MainContentWidgetState extends ConsumerState<MainContentWidget> {
               onReorder: (oldIndex, newIndex) => ref.read(mainContentControllerProvider.notifier).reorderActiveSubmodules(oldIndex, newIndex),
               scrollController: _scrollController,
               buildDefaultDragHandles: false,
-              scrollDirection: Axis.horizontal,
-              // padding: const EdgeInsets.symmetric(horizontal: 40),
+              scrollDirection: Axis.horizontal, 
               itemCount: submodules.length,
               itemBuilder: (context, index) => ReorderableDragStartListener(
                 key: Key('$index'),

@@ -22,6 +22,7 @@ class Fm2Layout extends StatelessWidget {
         }
         return Column(
           mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [for (final child in children) child],
         );
       case Layout.onlyRow:
@@ -52,6 +53,7 @@ class Fm2Layout extends StatelessWidget {
             flex: (layoutDescription as ComplexLayout).children[i].$1,
             child: Column(
               mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: innerChildren,
             ),
           ));
@@ -59,7 +61,7 @@ class Fm2Layout extends StatelessWidget {
             children.add(const SizedBox(width: md));
           }
         }
-        return Row(children: children);
+        return Row(crossAxisAlignment: CrossAxisAlignment.start, children: children);
       case Layout.rowsInColumn:
         List<Widget> children = [];
         for (int i = 0; i < ((layoutDescription as ComplexLayout).children.length); i++) {
@@ -73,6 +75,7 @@ class Fm2Layout extends StatelessWidget {
           children.add(
             Row(
               mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: innerChildren,
             ),
           );
@@ -80,7 +83,7 @@ class Fm2Layout extends StatelessWidget {
             children.add(const SizedBox(height: md));
           }
         }
-        return Column(mainAxisSize: MainAxisSize.min, children: children);
+        return Column(mainAxisSize: MainAxisSize.min, mainAxisAlignment: MainAxisAlignment.start, children: children);
     }
   }
 }

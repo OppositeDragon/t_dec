@@ -68,7 +68,7 @@ final submodulesControllerProvider =
 
 typedef _$SubmodulesController = AutoDisposeNotifier<SubmodulesState>;
 String _$mainContentControllerHash() =>
-    r'1898ddfc131324572f1b6a4000310ece37789624';
+    r'22c8052d30411ac2bb9c89feeb4c9feb34f693ce';
 
 /// See also [MainContentController].
 @ProviderFor(MainContentController)
