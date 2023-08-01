@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:t_dec_optimized/constants/numeric.dart';
 
 class FmSwitch extends StatelessWidget {
   const FmSwitch({
@@ -23,7 +24,15 @@ class FmSwitch extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(primaryText),
-                Text(secondaryText!),
+                const SizedBox(width: sm),
+                Flexible(
+                  child: Text(
+                    secondaryText!,
+                    softWrap: false,
+                    overflow: TextOverflow.fade,
+                    textAlign: TextAlign.right,
+                  ),
+                ),
               ],
             ),
     );
