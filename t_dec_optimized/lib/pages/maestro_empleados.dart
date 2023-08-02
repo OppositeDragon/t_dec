@@ -316,10 +316,15 @@ class _MaestraEmpleadosPageState extends ConsumerState<MaestroEmpleadosPage> {
                         children: [
                           CustomScrollView(
                             slivers: [
-                              const SliverToBoxAdapter(
-                                child: SizedBox(height: xxl),
+                              const SliverPadding(
+                                padding: EdgeInsets.fromLTRB(md, xl, md, sm),
+                                sliver: SliverToBoxAdapter(
+                                  child: SizedBox(),
                               ),
-                              SliverToBoxAdapter(
+                              ),
+                              SliverPadding(
+                                padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
+                                sliver: SliverToBoxAdapter(
                                 child: Fm3StackCard(
                                     title: 'Nombres',
                                     child: Fm2Layout(
@@ -329,7 +334,10 @@ class _MaestraEmpleadosPageState extends ConsumerState<MaestroEmpleadosPage> {
                                       (1, const FmTextField(label: 'Codigo')),
                                     ]))),
                               ),
-                              SliverToBoxAdapter(
+                              ),
+                              SliverPadding(
+                                padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
+                                sliver: SliverToBoxAdapter(
                                 child: Fm3StackCard(
                                     title: 'Datos Basicos',
                                     child: Fm2Layout(
@@ -361,7 +369,10 @@ class _MaestraEmpleadosPageState extends ConsumerState<MaestroEmpleadosPage> {
                                       ),
                                     ]))),
                               ),
-                              SliverToBoxAdapter(
+                              ),
+                              SliverPadding(
+                                padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
+                                sliver: SliverToBoxAdapter(
                                 child: Fm3StackCard(
                                     title: 'Direccion',
                                     child: Fm2Layout(
@@ -390,7 +401,10 @@ class _MaestraEmpleadosPageState extends ConsumerState<MaestroEmpleadosPage> {
                                       ),
                                     ]))),
                               ),
-                              SliverToBoxAdapter(
+                              ),
+                              SliverPadding(
+                                  padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
+                                  sliver: SliverToBoxAdapter(
                                 child: Fm2Layout(
                                     layoutDescription: OnlyRow(children: [
                                   (
@@ -418,19 +432,24 @@ class _MaestraEmpleadosPageState extends ConsumerState<MaestroEmpleadosPage> {
                                           onPressed: () {},
                                         ),
                                       ],
-                                      child: const FlutterLogo(size: 200),
+                                          child: const Center(child: FlutterLogo(size: 200)),
                                     )
                                   )
                                 ])),
-                              ),
+                                  )),
                             ],
                           ),
                           CustomScrollView(
                             slivers: [
-                              const SliverToBoxAdapter(
-                                child: SizedBox(height: xxl),
+                              const SliverPadding(
+                                padding: EdgeInsets.fromLTRB(md, xl, md, sm),
+                                sliver: SliverToBoxAdapter(
+                                  child: SizedBox(),
                               ),
-                              SliverToBoxAdapter(
+                              ),
+                              SliverPadding(
+                                padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
+                                sliver: SliverToBoxAdapter(
                                 child: Fm3StackCard(
                                     title: 'Nombres',
                                     child: Fm2Layout(
@@ -440,7 +459,10 @@ class _MaestraEmpleadosPageState extends ConsumerState<MaestroEmpleadosPage> {
                                       (1, const FmTextField(label: 'Codigo')),
                                     ]))),
                               ),
-                              SliverToBoxAdapter(
+                              ),
+                              SliverPadding(
+                                padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
+                                sliver: SliverToBoxAdapter(
                                 child: Fm3StackCard(
                                     title: 'Informacion del sueldo',
                                     child: Fm2Layout(
@@ -457,7 +479,10 @@ class _MaestraEmpleadosPageState extends ConsumerState<MaestroEmpleadosPage> {
                                       ]
                                     ]))),
                               ),
-                              SliverToBoxAdapter(
+                              ),
+                              SliverPadding(
+                                padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
+                                sliver: SliverToBoxAdapter(
                                 child: Fm3StackCard(
                                     title: 'Informacion de forma de pago proferida',
                                     child: Fm2Layout(
@@ -480,7 +505,10 @@ class _MaestraEmpleadosPageState extends ConsumerState<MaestroEmpleadosPage> {
                                       )
                                     ]))),
                               ),
-                              SliverToBoxAdapter(
+                              ),
+                              SliverPadding(
+                                  padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
+                                  sliver: SliverToBoxAdapter(
                                   child: Fm3StackCard(
                                       title: 'Informacion de forma de pago para el mes actual',
                                       child: Fm2Layout(
@@ -490,15 +518,20 @@ class _MaestraEmpleadosPageState extends ConsumerState<MaestroEmpleadosPage> {
                                           (3, const FmTextField(label: 'Forma de pago para el mes actual.')),
                                           (1, const SizedBox()),
                                         ],
-                                      )))),
+                                          ))))),
                             ],
                           ),
                           CustomScrollView(
                             slivers: [
-                              const SliverToBoxAdapter(
-                                child: SizedBox(height: xl),
+                              const SliverPadding(
+                                padding: EdgeInsets.fromLTRB(md, xl, md, sm),
+                                sliver: SliverToBoxAdapter(
+                                  child: SizedBox(),
                               ),
-                              SliverToBoxAdapter(
+                              ),
+                              SliverPadding(
+                                padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
+                                sliver: SliverToBoxAdapter(
                                 child: Fm3StackCard(
                                     title: 'Nombres',
                                     child: Fm2Layout(
@@ -508,7 +541,10 @@ class _MaestraEmpleadosPageState extends ConsumerState<MaestroEmpleadosPage> {
                                       (1, const FmTextField(label: 'Codigo')),
                                     ]))),
                               ),
-                              SliverToBoxAdapter(
+                              ),
+                              SliverPadding(
+                                padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
+                                sliver: SliverToBoxAdapter(
                                 child: Fm3StackCard(
                                     title: 'Informacion del sueldo',
                                     actions: [
@@ -551,16 +587,21 @@ class _MaestraEmpleadosPageState extends ConsumerState<MaestroEmpleadosPage> {
                                           )
                                         ]
                                       ),
-                                    ]))),
+                                        ])))),
                               ),
                             ],
                           ),
                           CustomScrollView(
                             slivers: [
-                              const SliverToBoxAdapter(
-                                child: SizedBox(height: xl),
+                              const SliverPadding(
+                                padding: EdgeInsets.fromLTRB(md, xl, md, sm),
+                                sliver: SliverToBoxAdapter(
+                                  child: SizedBox(),
                               ),
-                              SliverToBoxAdapter(
+                              ),
+                              SliverPadding(
+                                padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
+                                sliver: SliverToBoxAdapter(
                                 child: Fm3StackCard(
                                     title: 'Nombres',
                                     child: Fm2Layout(
@@ -570,7 +611,10 @@ class _MaestraEmpleadosPageState extends ConsumerState<MaestroEmpleadosPage> {
                                       (1, const FmTextField(label: 'Codigo')),
                                     ]))),
                               ),
-                              SliverToBoxAdapter(
+                              ),
+                              SliverPadding(
+                                padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
+                                sliver: SliverToBoxAdapter(
                                 child: Fm2Layout(
                                     layoutDescription: ColumnsInRow(children: [
                                   (
@@ -649,16 +693,21 @@ class _MaestraEmpleadosPageState extends ConsumerState<MaestroEmpleadosPage> {
                                           ]))),
                                     ]
                                   ),
-                                ])),
+                                ]))),
                               ),
                             ],
                           ),
                           CustomScrollView(
                             slivers: [
-                              const SliverToBoxAdapter(
-                                child: SizedBox(height: xl),
+                              const SliverPadding(
+                                padding: EdgeInsets.fromLTRB(md, xl, md, sm),
+                                sliver: SliverToBoxAdapter(
+                                  child: SizedBox(),
                               ),
-                              SliverToBoxAdapter(
+                              ),
+                              SliverPadding(
+                                padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
+                                sliver: SliverToBoxAdapter(
                                 child: Fm3StackCard(
                                     title: 'Nombres',
                                     child: Fm2Layout(
@@ -668,7 +717,10 @@ class _MaestraEmpleadosPageState extends ConsumerState<MaestroEmpleadosPage> {
                                       (1, const FmTextField(label: 'Codigo')),
                                     ]))),
                               ),
-                              SliverToBoxAdapter(
+                              ),
+                              SliverPadding(
+                                padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
+                                sliver: SliverToBoxAdapter(
                                 child: Fm3StackCard(
                                     title: 'Informacion del sueldo',
                                     actions: [
@@ -711,16 +763,21 @@ class _MaestraEmpleadosPageState extends ConsumerState<MaestroEmpleadosPage> {
                                           )
                                         ]
                                       ),
-                                    ]))),
+                                        ])))),
                               ),
                             ],
                           ),
                           CustomScrollView(
                             slivers: [
-                              const SliverToBoxAdapter(
-                                child: SizedBox(height: xl),
+                              const SliverPadding(
+                                padding: EdgeInsets.fromLTRB(md, xl, md, sm),
+                                sliver: SliverToBoxAdapter(
+                                  child: SizedBox(),
                               ),
-                              SliverToBoxAdapter(
+                              ),
+                              SliverPadding(
+                                padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
+                                sliver: SliverToBoxAdapter(
                                 child: Fm3StackCard(
                                     title: 'Nombres',
                                     child: Fm2Layout(
@@ -730,7 +787,10 @@ class _MaestraEmpleadosPageState extends ConsumerState<MaestroEmpleadosPage> {
                                       (1, const FmTextField(label: 'Codigo')),
                                     ]))),
                               ),
-                              SliverToBoxAdapter(
+                              ),
+                              SliverPadding(
+                                padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
+                                sliver: SliverToBoxAdapter(
                                 child: Fm3StackCard(
                                     title: 'Extras',
                                     child: Fm2Layout(
@@ -739,7 +799,10 @@ class _MaestraEmpleadosPageState extends ConsumerState<MaestroEmpleadosPage> {
                                       (2, const FmTextField(label: 'Supervision')),
                                     ]))),
                               ),
-                              SliverToBoxAdapter(
+                              ),
+                              SliverPadding(
+                                padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
+                                sliver: SliverToBoxAdapter(
                                 child: Fm3StackCard(
                                     title: 'Informacion del sueldo',
                                     actions: [
@@ -786,15 +849,20 @@ class _MaestraEmpleadosPageState extends ConsumerState<MaestroEmpleadosPage> {
 																							)
                                         ]
                                       ),
-                                    ]))),
+                                        ])))),
                               ),
                             ],
                           ),
                           CustomScrollView(slivers: [
-                            const SliverToBoxAdapter(
-                              child: SizedBox(height: xl),
+                            const SliverPadding(
+                              padding: EdgeInsets.fromLTRB(md, xl, md, sm),
+                              sliver: SliverToBoxAdapter(
+                                child: SizedBox(),
                             ),
-                            SliverToBoxAdapter(
+                            ),
+                            SliverPadding(
+                              padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
+                              sliver: SliverToBoxAdapter(
                               child: Fm3StackCard(
                                   title: 'Nombres',
                                   child: Fm2Layout(
@@ -804,7 +872,10 @@ class _MaestraEmpleadosPageState extends ConsumerState<MaestroEmpleadosPage> {
                                     (1, const FmTextField(label: 'Codigo')),
                                   ]))),
                             ),
-                            SliverToBoxAdapter(
+                            ),
+                            SliverPadding(
+                              padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
+                              sliver: SliverToBoxAdapter(
                               child: Fm3StackCard(
                                   title: 'Nombres',
                                   child: Fm2Layout(
@@ -819,6 +890,7 @@ class _MaestraEmpleadosPageState extends ConsumerState<MaestroEmpleadosPage> {
                                     const FmTextField(label: 'Personalizado 8'),
                                     const FmTextField(label: 'Personalizado 9'),
                                   ]))),
+                              ),
                             )
                           ]),
                         ],
