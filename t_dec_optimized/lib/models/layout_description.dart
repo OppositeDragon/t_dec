@@ -1,31 +1,41 @@
 import 'package:flutter/widgets.dart';
 
-import '/constants/enums.dart';
+sealed class LayoutDescription {}
 
-abstract class LayoutDescription {
-  late Layout layout;
+final class OnlyRow extends LayoutDescription {
+  List<(int, Widget)> children;
+  OnlyRow({required this.children})
+      : assert(
+          children.isNotEmpty,
+          'At least one child is required.',
+        );
 }
 
-class SimpleLayout implements LayoutDescription {
-  @override
-  late Layout layout;
-  List<(int,Widget)> children;
-  SimpleLayout({required this.layout, required this.children})
+final class OnlyColumn implements LayoutDescription {
+  List<Widget> children;
+  OnlyColumn({required this.children})
+      : assert(
+          children.isNotEmpty,
+          'At least one child is required.',
+        );
+}
+
+final class RowsInColumn implements LayoutDescription {
+  List<List<(int, Widget)>> children;
+  RowsInColumn({required this.children})
       : assert(
           children.isNotEmpty,
           'At least one child is required.',
         ),
         assert(
-          layout == Layout.onlyColumn || layout == Layout.onlyRow,
-          'Layout must be either column or row.',
+          children.any((element) => element.isNotEmpty),
+          'At least one child is required on each list.',
         );
 }
 
-class ComplexLayout implements LayoutDescription {
-  @override
-  late Layout layout;
-  List<(int,List<(int,Widget)> )> children;
-  ComplexLayout({required this.layout, required this.children})
+final class ColumnsInRow implements LayoutDescription {
+  List<(int, List<Widget>)> children;
+  ColumnsInRow({required this.children})
       : assert(
           children.isNotEmpty,
           'At least one child is required.',
@@ -33,9 +43,5 @@ class ComplexLayout implements LayoutDescription {
         assert(
           children.any((element) => element.$2.isNotEmpty),
           'At least one child is required on each list.',
-        ),
-        assert(
-          layout == Layout.columnsInRow || layout == Layout.rowsInColumn,
-          'Layout must be of noted type.',
         );
 }
