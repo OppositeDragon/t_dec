@@ -35,7 +35,6 @@ class _MaestraEmpleadosPageState extends ConsumerState<MaestroEmpleadosPage> {
   @override
   Widget build(BuildContext buildContext) {
     final empleados = ref.watch(empleadosControllerProvider);
-    final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
     return PageView(
       controller: controller,
@@ -103,159 +102,25 @@ class _MaestraEmpleadosPageState extends ConsumerState<MaestroEmpleadosPage> {
                   return SingleChildScrollView(
                     child: SizedBox(
                       width: double.infinity,
-                      child: DataTable(
-                        headingTextStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                        dataTextStyle: const TextStyle(fontSize: 16),
-                        columnSpacing: 16,
-                        showCheckboxColumn: false,
-                        columns: [
-                          const DataColumn(label: Text('Ced / RUC'), tooltip: 'Numero de identificacion'),
-                          const DataColumn(label: Text('Nombres'), tooltip: 'Nombres'),
-                          const DataColumn(label: Text('Telefono'), tooltip: 'Telefono'),
-                          if (constraints.maxWidth > 700)
-                            const DataColumn(label: Text('E-mail'), tooltip: 'Correo electronico'),
-                          if (constraints.maxWidth > 700)
-                            const DataColumn(label: Text('Direccion'), tooltip: 'Direccion'),
-                          const DataColumn(label: Text('Estado'), tooltip: 'Estado cliente'),
-                        ],
-                        rows: [
-                          for (int i = 0; i < empleados.length; i++)
-                            DataRow(
-                              onSelectChanged: (value) {
-                                setState(() {
-                                  empleados[i] = empleados[i].copyWith(selected: value ?? false);
-                                });
-                              },
-                              selected: empleados[i].selected,
-                              cells: [
-                                DataCell(
-                                  Text(empleados[i].identificacion),
-                                  onTap: () {
-                                    setState(() {
-                                      for (int j = 0; j < empleados.length; j++) {
-                                        if (j != i) {
-                                          empleados[j] = empleados[j].copyWith(selected: false);
-                                        } else {
-                                          empleados[j] = empleados[j].copyWith(selected: !empleados[j].selected);
-                                        }
-                                      }
-                                    });
-                                  },
-                                  onDoubleTap: () {
-                                    setState(() {
-                                      identificacion = empleados[i].identificacion;
-                                      animateToPage(1);
-                                    });
-                                  },
-                                ),
-                                DataCell(
-                                  Text('${empleados[i].nombres} ${empleados[i].apellidos}'),
-                                  onTap: () {
-                                    setState(() {
-                                      for (int j = 0; j < empleados.length; j++) {
-                                        if (j != i) {
-                                          empleados[j] = empleados[j].copyWith(selected: false);
-                                        } else {
-                                          empleados[j] = empleados[j].copyWith(selected: !empleados[j].selected);
-                                        }
-                                      }
-                                    });
-                                  },
-                                  onDoubleTap: () {
-                                    setState(() {
-                                      identificacion = empleados[i].identificacion;
-                                      animateToPage(1);
-                                    });
-                                  },
-                                ),
-                                DataCell(
-                                  Text(empleados[i].telCelular),
-                                  onTap: () {
-                                    setState(() {
-                                      for (int j = 0; j < empleados.length; j++) {
-                                        if (j != i) {
-                                          empleados[j] = empleados[j].copyWith(selected: false);
-                                        } else {
-                                          empleados[j] = empleados[j].copyWith(selected: !empleados[j].selected);
-                                        }
-                                      }
-                                    });
-                                  },
-                                  onDoubleTap: () {
-                                    setState(() {
-                                      identificacion = empleados[i].identificacion;
-                                      animateToPage(1);
-                                    });
-                                  },
-                                ),
-                                if (constraints.maxWidth > 700)
-                                  DataCell(
-                                    Text(empleados[i].correo),
-                                    onTap: () {
-                                      setState(() {
-                                        for (int j = 0; j < empleados.length; j++) {
-                                          if (j != i) {
-                                            empleados[j] = empleados[j].copyWith(selected: false);
-                                          } else {
-                                            empleados[j] = empleados[j].copyWith(selected: !empleados[j].selected);
-                                          }
-                                        }
-                                      });
-                                    },
-                                    onDoubleTap: () {
-                                      setState(() {
-                                        identificacion = empleados[i].identificacion;
-                                        animateToPage(1);
-                                      });
-                                    },
-                                  ),
-                                if (constraints.maxWidth > 700)
-                                  DataCell(
-                                    Text(empleados[i].direccion),
-                                    onTap: () {
-                                      setState(() {
-                                        for (int j = 0; j < empleados.length; j++) {
-                                          if (j != i) {
-                                            empleados[j] = empleados[j].copyWith(selected: false);
-                                          } else {
-                                            empleados[j] = empleados[j].copyWith(selected: !empleados[j].selected);
-                                          }
-                                        }
-                                      });
-                                    },
-                                    onDoubleTap: () {
-                                      setState(() {
-                                        identificacion = empleados[i].identificacion;
-                                        animateToPage(1);
-                                      });
-                                    },
-                                  ),
-                                DataCell(
-                                  empleados[i].estado
-                                      ? Icon(Icons.check, color: colorScheme.tertiary)
-                                      : Icon(Icons.close, color: colorScheme.error),
-                                  onTap: () {
-                                    setState(() {
-                                      for (int j = 0; j < empleados.length; j++) {
-                                        if (j != i) {
-                                          empleados[j] = empleados[j].copyWith(selected: false);
-                                        } else {
-                                          empleados[j] = empleados[j].copyWith(selected: !empleados[j].selected);
-                                        }
-                                      }
-                                    });
-                                  },
-                                  onDoubleTap: () {
-                                    setState(() {
-                                      identificacion = empleados[i].identificacion;
-                                      animateToPage(1);
-                                    });
-                                  },
-                                ),
-                              ],
-                            ),
-                        ],
-                      ),
+                      child: FmDataTable(
+                          data: DTData(header: [
+                        const DTHeader(label: 'Ced / RUC', tooltip: 'Numero de identificacion'),
+                        const DTHeader(label: 'Nombres', tooltip: 'Nombres'),
+                        const DTHeader(label: 'Telefono', tooltip: 'Telefono'),
+                        const DTHeader(label: 'E-mail', tooltip: 'Correo electronico'),
+                        const DTHeader(label: 'Direccion', tooltip: 'Direccion'),
+                        const DTHeader(label: 'Estado', tooltip: 'Estado cliente'),
+                      ], rows: [
+                        for (int i = 0; i < empleados.length; i++)
+                          DTRow(cells: [
+                            empleados[i].identificacion,
+                            empleados[i].nombres,
+                            empleados[i].telCelular,
+                            empleados[i].correo,
+                            empleados[i].direccion,
+                            empleados[i].estado ? '✓' : 'x',
+                          ]),
+                      ])),
                     ),
                   );
                 },
@@ -320,122 +185,122 @@ class _MaestraEmpleadosPageState extends ConsumerState<MaestroEmpleadosPage> {
                                 padding: EdgeInsets.fromLTRB(md, xl, md, sm),
                                 sliver: SliverToBoxAdapter(
                                   child: SizedBox(),
-                              ),
-                              ),
-                              SliverPadding(
-                                padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
-                                sliver: SliverToBoxAdapter(
-                                child: Fm3StackCard(
-                                    title: 'Nombres',
-                                    child: Fm2Layout(
-                                        layoutDescription: OnlyRow(children: [
-                                      (2, const FmTextField(label: 'Apellidos')),
-                                      (2, const FmTextField(label: 'Nombres')),
-                                      (1, const FmTextField(label: 'Codigo')),
-                                    ]))),
-                              ),
+                                ),
                               ),
                               SliverPadding(
                                 padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
                                 sliver: SliverToBoxAdapter(
-                                child: Fm3StackCard(
-                                    title: 'Datos Basicos',
-                                    child: Fm2Layout(
-                                        layoutDescription: ColumnsInRow(children: [
-                                      (
-                                        1,
-                                        [
-                                          (const FmTextField(label: 'Cedula')),
-                                          (const FmTextField(label: 'Fecha Nacimiento')),
-                                        ]
-                                      ),
-                                      (
-                                        1,
-                                        [
-                                          (const FmTextField(label: 'Cargo')),
-                                          (const FmTextField(label: 'Cod. Ocupacional')),
-                                        ]
-                                      ),
-                                      (
-                                        1,
-                                        [
-                                          (const FmTextField(label: 'Codigo IESS')),
-                                          (const FmSwitch(
-                                              onChanged: null,
-                                              primaryText: 'Estado',
-                                              secondaryText: 'inactivo',
-                                              value: true)),
-                                        ]
-                                      ),
-                                    ]))),
-                              ),
+                                  child: Fm3StackCard(
+                                      title: 'Nombres',
+                                      child: Fm2Layout(
+                                          layoutDescription: OnlyRow(children: [
+                                        (2, const FmTextField(label: 'Apellidos')),
+                                        (2, const FmTextField(label: 'Nombres')),
+                                        (1, const FmTextField(label: 'Codigo')),
+                                      ]))),
+                                ),
                               ),
                               SliverPadding(
                                 padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
                                 sliver: SliverToBoxAdapter(
-                                child: Fm3StackCard(
-                                    title: 'Direccion',
-                                    child: Fm2Layout(
-                                        layoutDescription: ColumnsInRow(children: [
-                                      (
-                                        2,
-                                        [
-                                          (const FmTextField(label: 'Direccion 1')),
-                                          (const FmTextField(label: 'Direccion 2')),
-                                          (const FmTextField(label: 'Direccion 3')),
-                                        ]
-                                      ),
-                                      (
-                                        1,
-                                        [
-                                          (const FmTextField(label: 'Telefono 1')),
-                                          (const FmTextField(label: 'Telefono 2')),
-                                          (const FmTextField(label: 'Telefono 3')),
-                                        ]
-                                      ),
-                                      (
-                                        1,
-                                        [
-                                          (const FmTextField(label: 'Observaciones', maxLines: 5)),
-                                        ]
-                                      ),
-                                    ]))),
+                                  child: Fm3StackCard(
+                                      title: 'Datos Basicos',
+                                      child: Fm2Layout(
+                                          layoutDescription: ColumnsInRow(children: [
+                                        (
+                                          1,
+                                          [
+                                            (const FmTextField(label: 'Cedula')),
+                                            (const FmTextField(label: 'Fecha Nacimiento')),
+                                          ]
+                                        ),
+                                        (
+                                          1,
+                                          [
+                                            (const FmTextField(label: 'Cargo')),
+                                            (const FmTextField(label: 'Cod. Ocupacional')),
+                                          ]
+                                        ),
+                                        (
+                                          1,
+                                          [
+                                            (const FmTextField(label: 'Codigo IESS')),
+                                            (const FmSwitch(
+                                                onChanged: null,
+                                                primaryText: 'Estado',
+                                                secondaryText: 'inactivo',
+                                                value: true)),
+                                          ]
+                                        ),
+                                      ]))),
+                                ),
                               ),
+                              SliverPadding(
+                                padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
+                                sliver: SliverToBoxAdapter(
+                                  child: Fm3StackCard(
+                                      title: 'Direccion',
+                                      child: Fm2Layout(
+                                          layoutDescription: ColumnsInRow(children: [
+                                        (
+                                          2,
+                                          [
+                                            (const FmTextField(label: 'Direccion 1')),
+                                            (const FmTextField(label: 'Direccion 2')),
+                                            (const FmTextField(label: 'Direccion 3')),
+                                          ]
+                                        ),
+                                        (
+                                          1,
+                                          [
+                                            (const FmTextField(label: 'Telefono 1')),
+                                            (const FmTextField(label: 'Telefono 2')),
+                                            (const FmTextField(label: 'Telefono 3')),
+                                          ]
+                                        ),
+                                        (
+                                          1,
+                                          [
+                                            (const FmTextField(label: 'Observaciones', maxLines: 5)),
+                                          ]
+                                        ),
+                                      ]))),
+                                ),
                               ),
                               SliverPadding(
                                   padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
                                   sliver: SliverToBoxAdapter(
-                                child: Fm2Layout(
-                                    layoutDescription: OnlyRow(children: [
-                                  (
-                                    11,
-                                    Fm3StackCard(
-                                        title: 'Enlaces',
-                                        child: Fm2Layout(
-                                            layoutDescription: OnlyColumn(children: [
-                                          (const FmTextField(label: 'Departamento')),
-                                          (const FmTextField(label: 'Cuenta contable')),
-                                          (const FmTextField(label: 'Cuenta de costo')),
-                                        ])))
-                                  ),
-                                  (
-                                    5,
-                                    Fm3StackCard(
-                                      title: 'Foto',
-                                      actions: [
-                                        IconButton.filled(
-                                          icon: const Icon(Icons.add),
-                                          onPressed: () {},
-                                        ),
-                                        IconButton.filled(
-                                          icon: const Icon(Icons.delete),
-                                          onPressed: () {},
-                                        ),
-                                      ],
+                                    child: Fm2Layout(
+                                        layoutDescription: OnlyRow(children: [
+                                      (
+                                        11,
+                                        Fm3StackCard(
+                                            title: 'Enlaces',
+                                            child: Fm2Layout(
+                                                layoutDescription: OnlyColumn(children: [
+                                              (const FmTextField(label: 'Departamento')),
+                                              (const FmTextField(label: 'Cuenta contable')),
+                                              (const FmTextField(label: 'Cuenta de costo')),
+                                            ])))
+                                      ),
+                                      (
+                                        5,
+                                        Fm3StackCard(
+                                          title: 'Foto',
+                                          actions: [
+                                            IconButton.filled(
+                                              icon: const Icon(Icons.add),
+                                              onPressed: () {},
+                                            ),
+                                            IconButton.filled(
+                                              icon: const Icon(Icons.delete),
+                                              onPressed: () {},
+                                            ),
+                                          ],
                                           child: const Center(child: FlutterLogo(size: 200)),
-                                    )
-                                  )
-                                ])),
+                                        )
+                                      )
+                                    ])),
                                   )),
                             ],
                           ),
@@ -445,79 +310,79 @@ class _MaestraEmpleadosPageState extends ConsumerState<MaestroEmpleadosPage> {
                                 padding: EdgeInsets.fromLTRB(md, xl, md, sm),
                                 sliver: SliverToBoxAdapter(
                                   child: SizedBox(),
-                              ),
-                              ),
-                              SliverPadding(
-                                padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
-                                sliver: SliverToBoxAdapter(
-                                child: Fm3StackCard(
-                                    title: 'Nombres',
-                                    child: Fm2Layout(
-                                        layoutDescription: OnlyRow(children: [
-                                      (2, const FmTextField(label: 'Apellidos')),
-                                      (2, const FmTextField(label: 'Nombres')),
-                                      (1, const FmTextField(label: 'Codigo')),
-                                    ]))),
-                              ),
+                                ),
                               ),
                               SliverPadding(
                                 padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
                                 sliver: SliverToBoxAdapter(
-                                child: Fm3StackCard(
-                                    title: 'Informacion del sueldo',
-                                    child: Fm2Layout(
-                                        layoutDescription: RowsInColumn(children: [
-                                      [
-                                        (1, const FmTextField(label: 'Sueldo Base')),
-                                        (1, const SizedBox()),
-                                        (1, const FmTextField(label: 'Tipo Contrato')),
-                                      ],
-                                      [
-                                        (1, const FmTextField(label: 'Forma de pago D13')),
-                                        (1, const FmTextField(label: 'Forma de pago D14')),
-                                        (1, const FmTextField(label: 'Forma de pago FON')),
-                                      ]
-                                    ]))),
-                              ),
+                                  child: Fm3StackCard(
+                                      title: 'Nombres',
+                                      child: Fm2Layout(
+                                          layoutDescription: OnlyRow(children: [
+                                        (2, const FmTextField(label: 'Apellidos')),
+                                        (2, const FmTextField(label: 'Nombres')),
+                                        (1, const FmTextField(label: 'Codigo')),
+                                      ]))),
+                                ),
                               ),
                               SliverPadding(
                                 padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
                                 sliver: SliverToBoxAdapter(
-                                child: Fm3StackCard(
-                                    title: 'Informacion de forma de pago proferida',
-                                    child: Fm2Layout(
-                                        layoutDescription: ColumnsInRow(children: [
-                                      (
-                                        2,
+                                  child: Fm3StackCard(
+                                      title: 'Informacion del sueldo',
+                                      child: Fm2Layout(
+                                          layoutDescription: RowsInColumn(children: [
                                         [
-                                          const FmTextField(label: 'Forma de pago'),
-                                          const FmTextField(label: 'Hacia el blanco'),
-                                          const FmTextField(label: 'Correo electronico'),
-                                        ]
-                                      ),
-                                      (
-                                        1,
+                                          (1, const FmTextField(label: 'Sueldo Base')),
+                                          (1, const SizedBox()),
+                                          (1, const FmTextField(label: 'Tipo Contrato')),
+                                        ],
                                         [
-                                          const FmTextField(label: 'Cuenta Corriente'),
-                                          const FmTextField(label: 'Cuenta Ahorros'),
-                                          const FmTextField(label: 'Cuenta Virtual'),
+                                          (1, const FmTextField(label: 'Forma de pago D13')),
+                                          (1, const FmTextField(label: 'Forma de pago D14')),
+                                          (1, const FmTextField(label: 'Forma de pago FON')),
                                         ]
-                                      )
-                                    ]))),
+                                      ]))),
+                                ),
                               ),
+                              SliverPadding(
+                                padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
+                                sliver: SliverToBoxAdapter(
+                                  child: Fm3StackCard(
+                                      title: 'Informacion de forma de pago proferida',
+                                      child: Fm2Layout(
+                                          layoutDescription: ColumnsInRow(children: [
+                                        (
+                                          2,
+                                          [
+                                            const FmTextField(label: 'Forma de pago'),
+                                            const FmTextField(label: 'Hacia el blanco'),
+                                            const FmTextField(label: 'Correo electronico'),
+                                          ]
+                                        ),
+                                        (
+                                          1,
+                                          [
+                                            const FmTextField(label: 'Cuenta Corriente'),
+                                            const FmTextField(label: 'Cuenta Ahorros'),
+                                            const FmTextField(label: 'Cuenta Virtual'),
+                                          ]
+                                        )
+                                      ]))),
+                                ),
                               ),
                               SliverPadding(
                                   padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
                                   sliver: SliverToBoxAdapter(
-                                  child: Fm3StackCard(
-                                      title: 'Informacion de forma de pago para el mes actual',
-                                      child: Fm2Layout(
-                                          layoutDescription: OnlyRow(
-                                        children: [
-                                          (1, const SizedBox()),
-                                          (3, const FmTextField(label: 'Forma de pago para el mes actual.')),
-                                          (1, const SizedBox()),
-                                        ],
+                                      child: Fm3StackCard(
+                                          title: 'Informacion de forma de pago para el mes actual',
+                                          child: Fm2Layout(
+                                              layoutDescription: OnlyRow(
+                                            children: [
+                                              (1, const SizedBox()),
+                                              (3, const FmTextField(label: 'Forma de pago para el mes actual.')),
+                                              (1, const SizedBox()),
+                                            ],
                                           ))))),
                             ],
                           ),
@@ -527,66 +392,66 @@ class _MaestraEmpleadosPageState extends ConsumerState<MaestroEmpleadosPage> {
                                 padding: EdgeInsets.fromLTRB(md, xl, md, sm),
                                 sliver: SliverToBoxAdapter(
                                   child: SizedBox(),
-                              ),
-                              ),
-                              SliverPadding(
-                                padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
-                                sliver: SliverToBoxAdapter(
-                                child: Fm3StackCard(
-                                    title: 'Nombres',
-                                    child: Fm2Layout(
-                                        layoutDescription: OnlyRow(children: [
-                                      (2, const FmTextField(label: 'Apellidos')),
-                                      (2, const FmTextField(label: 'Nombres')),
-                                      (1, const FmTextField(label: 'Codigo')),
-                                    ]))),
-                              ),
+                                ),
                               ),
                               SliverPadding(
                                 padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
                                 sliver: SliverToBoxAdapter(
-                                child: Fm3StackCard(
-                                    title: 'Informacion del sueldo',
-                                    actions: [
-                                      IconButton.filled(
-                                        icon: const Icon(Icons.delete),
-                                        onPressed: () {},
-                                      ),
-                                      IconButton.filled(
-                                        icon: const Icon(Icons.add),
-                                        onPressed: () {},
-                                      ),
-                                    ],
-                                    child: Fm2Layout(
-                                        layoutDescription: ColumnsInRow(children: [
-                                      (
-                                        1,
-                                        [
-                                          const FmTextField(label: 'Estado Civil'),
-                                          const FmTextField(label: 'Tipo de carga'),
-                                          const FmTextField(label: 'Nombres'),
-                                          const FmTextField(label: 'Fecha nacimiento'),
-                                          const FmTextField(label: 'Edad'),
-                                          const FmTextField(label: 'Genero'),
-                                          const FmTextField(label: 'Otros datos', maxLines: 5),
-                                        ]
-                                      ),
-                                      (
-                                        1,
-                                        [
-                                          SingleChildScrollView(
-                                            child: FmDataTable(
-                                                data: DTData(header: [
-                                              const DTHeader(label: 'Relacion'),
-                                              const DTHeader(label: 'Nombres'),
-                                              const DTHeader(label: 'Edad', numeric: true),
-                                            ], rows: [
-                                              const DTRow(cells: ['Hijo', 'Juan Perez', '12']),
-                                              const DTRow(cells: ['Padre', 'Ibarra Velasco', '69']),
-                                            ])),
-                                          )
-                                        ]
-                                      ),
+                                  child: Fm3StackCard(
+                                      title: 'Nombres',
+                                      child: Fm2Layout(
+                                          layoutDescription: OnlyRow(children: [
+                                        (2, const FmTextField(label: 'Apellidos')),
+                                        (2, const FmTextField(label: 'Nombres')),
+                                        (1, const FmTextField(label: 'Codigo')),
+                                      ]))),
+                                ),
+                              ),
+                              SliverPadding(
+                                padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
+                                sliver: SliverToBoxAdapter(
+                                    child: Fm3StackCard(
+                                        title: 'Informacion del sueldo',
+                                        actions: [
+                                          IconButton.filled(
+                                            icon: const Icon(Icons.delete),
+                                            onPressed: () {},
+                                          ),
+                                          IconButton.filled(
+                                            icon: const Icon(Icons.add),
+                                            onPressed: () {},
+                                          ),
+                                        ],
+                                        child: Fm2Layout(
+                                            layoutDescription: ColumnsInRow(children: [
+                                          (
+                                            1,
+                                            [
+                                              const FmTextField(label: 'Estado Civil'),
+                                              const FmTextField(label: 'Tipo de carga'),
+                                              const FmTextField(label: 'Nombres'),
+                                              const FmTextField(label: 'Fecha nacimiento'),
+                                              const FmTextField(label: 'Edad'),
+                                              const FmTextField(label: 'Genero'),
+                                              const FmTextField(label: 'Otros datos', maxLines: 5),
+                                            ]
+                                          ),
+                                          (
+                                            1,
+                                            [
+                                              SingleChildScrollView(
+                                                child: FmDataTable(
+                                                    data: DTData(header: [
+                                                  const DTHeader(label: 'Relacion'),
+                                                  const DTHeader(label: 'Nombres'),
+                                                  const DTHeader(label: 'Edad', numeric: true),
+                                                ], rows: [
+                                                  const DTRow(cells: ['Hijo', 'Juan Perez', '12']),
+                                                  const DTRow(cells: ['Padre', 'Ibarra Velasco', '69']),
+                                                ])),
+                                              )
+                                            ]
+                                          ),
                                         ])))),
                               ),
                             ],
@@ -597,26 +462,26 @@ class _MaestraEmpleadosPageState extends ConsumerState<MaestroEmpleadosPage> {
                                 padding: EdgeInsets.fromLTRB(md, xl, md, sm),
                                 sliver: SliverToBoxAdapter(
                                   child: SizedBox(),
-                              ),
+                                ),
                               ),
                               SliverPadding(
                                 padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
                                 sliver: SliverToBoxAdapter(
-                                child: Fm3StackCard(
-                                    title: 'Nombres',
+                                  child: Fm3StackCard(
+                                      title: 'Nombres',
+                                      child: Fm2Layout(
+                                          layoutDescription: OnlyRow(children: [
+                                        (2, const FmTextField(label: 'Apellidos')),
+                                        (2, const FmTextField(label: 'Nombres')),
+                                        (1, const FmTextField(label: 'Codigo')),
+                                      ]))),
+                                ),
+                              ),
+                              SliverPadding(
+                                padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
+                                sliver: SliverToBoxAdapter(
                                     child: Fm2Layout(
-                                        layoutDescription: OnlyRow(children: [
-                                      (2, const FmTextField(label: 'Apellidos')),
-                                      (2, const FmTextField(label: 'Nombres')),
-                                      (1, const FmTextField(label: 'Codigo')),
-                                    ]))),
-                              ),
-                              ),
-                              SliverPadding(
-                                padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
-                                sliver: SliverToBoxAdapter(
-                                child: Fm2Layout(
-                                    layoutDescription: ColumnsInRow(children: [
+                                        layoutDescription: ColumnsInRow(children: [
                                   (
                                     2,
                                     [
@@ -703,66 +568,66 @@ class _MaestraEmpleadosPageState extends ConsumerState<MaestroEmpleadosPage> {
                                 padding: EdgeInsets.fromLTRB(md, xl, md, sm),
                                 sliver: SliverToBoxAdapter(
                                   child: SizedBox(),
-                              ),
-                              ),
-                              SliverPadding(
-                                padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
-                                sliver: SliverToBoxAdapter(
-                                child: Fm3StackCard(
-                                    title: 'Nombres',
-                                    child: Fm2Layout(
-                                        layoutDescription: OnlyRow(children: [
-                                      (2, const FmTextField(label: 'Apellidos')),
-                                      (2, const FmTextField(label: 'Nombres')),
-                                      (1, const FmTextField(label: 'Codigo')),
-                                    ]))),
-                              ),
+                                ),
                               ),
                               SliverPadding(
                                 padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
                                 sliver: SliverToBoxAdapter(
-                                child: Fm3StackCard(
-                                    title: 'Informacion del sueldo',
-                                    actions: [
-                                      IconButton.filled(
-                                        icon: const Icon(Icons.delete),
-                                        onPressed: () {},
-                                      ),
-                                      IconButton.filled(
-                                        icon: const Icon(Icons.add),
-                                        onPressed: () {},
-                                      ),
-                                    ],
-                                    child: Fm2Layout(
-                                        layoutDescription: ColumnsInRow(children: [
-                                      (
-                                        1,
-                                        [
-                                          FmSwitch(
-                                              onChanged: (value) {},
-                                              primaryText: 'Califica para fondo de reserva',
-                                              value: true),
-                                          const FmTextField(label: 'Entradas'),
-                                          const FmTextField(label: 'Salidas'),
-                                          const FmTextField(label: 'Notas', maxLines: 3),
-                                        ]
-                                      ),
-                                      (
-                                        1,
-                                        [
-                                          SingleChildScrollView(
-                                            child: FmDataTable(
-                                                data: DTData(header: [
-                                              const DTHeader(label: 'Entradas'),
-                                              const DTHeader(label: 'Salidas'),
-                                              const DTHeader(label: 'Notas', numeric: true),
-                                            ], rows: [
-                                              const DTRow(cells: ['xyz', '', 'abc']),
-                                              const DTRow(cells: ['', 'abc', 'xyz']),
-                                            ])),
-                                          )
-                                        ]
-                                      ),
+                                  child: Fm3StackCard(
+                                      title: 'Nombres',
+                                      child: Fm2Layout(
+                                          layoutDescription: OnlyRow(children: [
+                                        (2, const FmTextField(label: 'Apellidos')),
+                                        (2, const FmTextField(label: 'Nombres')),
+                                        (1, const FmTextField(label: 'Codigo')),
+                                      ]))),
+                                ),
+                              ),
+                              SliverPadding(
+                                padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
+                                sliver: SliverToBoxAdapter(
+                                    child: Fm3StackCard(
+                                        title: 'Informacion del sueldo',
+                                        actions: [
+                                          IconButton.filled(
+                                            icon: const Icon(Icons.delete),
+                                            onPressed: () {},
+                                          ),
+                                          IconButton.filled(
+                                            icon: const Icon(Icons.add),
+                                            onPressed: () {},
+                                          ),
+                                        ],
+                                        child: Fm2Layout(
+                                            layoutDescription: ColumnsInRow(children: [
+                                          (
+                                            1,
+                                            [
+                                              FmSwitch(
+                                                  onChanged: (value) {},
+                                                  primaryText: 'Califica para fondo de reserva',
+                                                  value: true),
+                                              const FmTextField(label: 'Entradas'),
+                                              const FmTextField(label: 'Salidas'),
+                                              const FmTextField(label: 'Notas', maxLines: 3),
+                                            ]
+                                          ),
+                                          (
+                                            1,
+                                            [
+                                              SingleChildScrollView(
+                                                child: FmDataTable(
+                                                    data: DTData(header: [
+                                                  const DTHeader(label: 'Entradas'),
+                                                  const DTHeader(label: 'Salidas'),
+                                                  const DTHeader(label: 'Notas', numeric: true),
+                                                ], rows: [
+                                                  const DTRow(cells: ['xyz', '', 'abc']),
+                                                  const DTRow(cells: ['', 'abc', 'xyz']),
+                                                ])),
+                                              )
+                                            ]
+                                          ),
                                         ])))),
                               ),
                             ],
@@ -773,82 +638,81 @@ class _MaestraEmpleadosPageState extends ConsumerState<MaestroEmpleadosPage> {
                                 padding: EdgeInsets.fromLTRB(md, xl, md, sm),
                                 sliver: SliverToBoxAdapter(
                                   child: SizedBox(),
-                              ),
-                              ),
-                              SliverPadding(
-                                padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
-                                sliver: SliverToBoxAdapter(
-                                child: Fm3StackCard(
-                                    title: 'Nombres',
-                                    child: Fm2Layout(
-                                        layoutDescription: OnlyRow(children: [
-                                      (2, const FmTextField(label: 'Apellidos')),
-                                      (2, const FmTextField(label: 'Nombres')),
-                                      (1, const FmTextField(label: 'Codigo')),
-                                    ]))),
-                              ),
+                                ),
                               ),
                               SliverPadding(
                                 padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
                                 sliver: SliverToBoxAdapter(
-                                child: Fm3StackCard(
-                                    title: 'Extras',
-                                    child: Fm2Layout(
-                                        layoutDescription: OnlyRow(children: [
-                                      (2, const FmTextField(label: 'Dias adicionales de vacaciones')),
-                                      (2, const FmTextField(label: 'Supervision')),
-                                    ]))),
-                              ),
+                                  child: Fm3StackCard(
+                                      title: 'Nombres',
+                                      child: Fm2Layout(
+                                          layoutDescription: OnlyRow(children: [
+                                        (2, const FmTextField(label: 'Apellidos')),
+                                        (2, const FmTextField(label: 'Nombres')),
+                                        (1, const FmTextField(label: 'Codigo')),
+                                      ]))),
+                                ),
                               ),
                               SliverPadding(
                                 padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
                                 sliver: SliverToBoxAdapter(
-                                child: Fm3StackCard(
-                                    title: 'Informacion del sueldo',
-                                    actions: [
-                                      IconButton.filled(
-                                        icon: const Icon(Icons.delete),
-                                        onPressed: () {},
-                                      ),
-                                      IconButton.filled(
-                                        icon: const Icon(Icons.add),
-                                        onPressed: () {},
-                                      ),
-                                    ],
-                                    child: Fm2Layout(
-                                        layoutDescription: ColumnsInRow(children: [
-                                      (
-                                        1,
-                                        [
-                                          const FmTextField(label: 'Periodo'),
-                                          const FmTextField(label: 'Desde'),
-                                          const FmTextField(label: 'Hasta'),
-                                          const FmTextField(label: 'Dias normales'),
-                                          const FmTextField(label: 'Dias adicionales'),
-                                          const FmTextField(label: 'Dias (ingresos)'),
-                                          const FmTextField(label: 'Egreso normal'),
-                                          const FmTextField(label: 'Egreso adicional'),
-                                          const FmTextField(label: 'Dias (egresos)'),
-                                        ]
-                                      ),
-                                      (
-                                        3,
-                                        [
-                                          SingleChildScrollView(
-                                              child: FmDataTable(
-                                                  data: DTData(header: [
-                                            const DTHeader(label: 'Periodo'),
-                                            const DTHeader(label: 'Desde'),
-                                            const DTHeader(label: 'Hasta'),
-                                            const DTHeader(label: 'Dias ing.', numeric: true),
-                                            const DTHeader(label: 'Dias tomados', numeric: true),
-                                            const DTHeader(label: 'Pagadas', numeric: true),
-                                          ], rows: [
-                                            const DTRow(cells: ['junio-23', '10-12-23', '10-12-23', '3', '3', '3']), 
-                                          ]))
-																							)
-                                        ]
-                                      ),
+                                  child: Fm3StackCard(
+                                      title: 'Extras',
+                                      child: Fm2Layout(
+                                          layoutDescription: OnlyRow(children: [
+                                        (2, const FmTextField(label: 'Dias adicionales de vacaciones')),
+                                        (2, const FmTextField(label: 'Supervision')),
+                                      ]))),
+                                ),
+                              ),
+                              SliverPadding(
+                                padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
+                                sliver: SliverToBoxAdapter(
+                                    child: Fm3StackCard(
+                                        title: 'Informacion del sueldo',
+                                        actions: [
+                                          IconButton.filled(
+                                            icon: const Icon(Icons.delete),
+                                            onPressed: () {},
+                                          ),
+                                          IconButton.filled(
+                                            icon: const Icon(Icons.add),
+                                            onPressed: () {},
+                                          ),
+                                        ],
+                                        child: Fm2Layout(
+                                            layoutDescription: ColumnsInRow(children: [
+                                          (
+                                            1,
+                                            [
+                                              const FmTextField(label: 'Periodo'),
+                                              const FmTextField(label: 'Desde'),
+                                              const FmTextField(label: 'Hasta'),
+                                              const FmTextField(label: 'Dias normales'),
+                                              const FmTextField(label: 'Dias adicionales'),
+                                              const FmTextField(label: 'Dias (ingresos)'),
+                                              const FmTextField(label: 'Egreso normal'),
+                                              const FmTextField(label: 'Egreso adicional'),
+                                              const FmTextField(label: 'Dias (egresos)'),
+                                            ]
+                                          ),
+                                          (
+                                            3,
+                                            [
+                                              SingleChildScrollView(
+                                                  child: FmDataTable(
+                                                      data: DTData(header: [
+                                                const DTHeader(label: 'Periodo'),
+                                                const DTHeader(label: 'Desde'),
+                                                const DTHeader(label: 'Hasta'),
+                                                const DTHeader(label: 'Dias ing.', numeric: true),
+                                                const DTHeader(label: 'Dias tomados', numeric: true),
+                                                const DTHeader(label: 'Pagadas', numeric: true),
+                                              ], rows: [
+                                                const DTRow(cells: ['junio-23', '10-12-23', '10-12-23', '3', '3', '3']),
+                                              ])))
+                                            ]
+                                          ),
                                         ])))),
                               ),
                             ],
@@ -858,38 +722,38 @@ class _MaestraEmpleadosPageState extends ConsumerState<MaestroEmpleadosPage> {
                               padding: EdgeInsets.fromLTRB(md, xl, md, sm),
                               sliver: SliverToBoxAdapter(
                                 child: SizedBox(),
-                            ),
-                            ),
-                            SliverPadding(
-                              padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
-                              sliver: SliverToBoxAdapter(
-                              child: Fm3StackCard(
-                                  title: 'Nombres',
-                                  child: Fm2Layout(
-                                      layoutDescription: OnlyRow(children: [
-                                    (2, const FmTextField(label: 'Apellidos')),
-                                    (2, const FmTextField(label: 'Nombres')),
-                                    (1, const FmTextField(label: 'Codigo')),
-                                  ]))),
-                            ),
+                              ),
                             ),
                             SliverPadding(
                               padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
                               sliver: SliverToBoxAdapter(
-                              child: Fm3StackCard(
-                                  title: 'Nombres',
-                                  child: Fm2Layout(
-                                      layoutDescription: OnlyColumn(children: [
-                                    const FmTextField(label: 'Lista de Valores'),
-                                    const FmTextField(label: 'Area general'),
-                                    const FmTextField(label: 'Fecha especial'),
-                                    const FmTextField(label: 'Valor 2'),
-                                    const FmTextField(label: 'Personalizado 5'),
-                                    const FmTextField(label: 'Personalizado 6'),
-                                    const FmTextField(label: 'Personalizado 7'),
-                                    const FmTextField(label: 'Personalizado 8'),
-                                    const FmTextField(label: 'Personalizado 9'),
-                                  ]))),
+                                child: Fm3StackCard(
+                                    title: 'Nombres',
+                                    child: Fm2Layout(
+                                        layoutDescription: OnlyRow(children: [
+                                      (2, const FmTextField(label: 'Apellidos')),
+                                      (2, const FmTextField(label: 'Nombres')),
+                                      (1, const FmTextField(label: 'Codigo')),
+                                    ]))),
+                              ),
+                            ),
+                            SliverPadding(
+                              padding: const EdgeInsets.fromLTRB(md, xl, md, sm),
+                              sliver: SliverToBoxAdapter(
+                                child: Fm3StackCard(
+                                    title: 'Nombres',
+                                    child: Fm2Layout(
+                                        layoutDescription: OnlyColumn(children: [
+                                      const FmTextField(label: 'Lista de Valores'),
+                                      const FmTextField(label: 'Area general'),
+                                      const FmTextField(label: 'Fecha especial'),
+                                      const FmTextField(label: 'Valor 2'),
+                                      const FmTextField(label: 'Personalizado 5'),
+                                      const FmTextField(label: 'Personalizado 6'),
+                                      const FmTextField(label: 'Personalizado 7'),
+                                      const FmTextField(label: 'Personalizado 8'),
+                                      const FmTextField(label: 'Personalizado 9'),
+                                    ]))),
                               ),
                             )
                           ]),

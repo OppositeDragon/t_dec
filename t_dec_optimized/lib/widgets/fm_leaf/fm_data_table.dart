@@ -8,12 +8,12 @@ class FmDataTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (data.rows.any((row) => row.cells.length != data.header.length)) {
-      return const Text('Error: `header.lenght` and `cells.lenght` on each row, mismatch');
+      return const Center(child: Text('Error: `header.lenght` and `cells.lenght` on each row, mismatch'));
     }
     return DataTable(
       headingTextStyle: const TextStyle(fontSize: xl, fontWeight: FontWeight.bold),
       dataTextStyle: const TextStyle(fontSize: xl),
-      columnSpacing: xxl,
+      columnSpacing: md,
       showCheckboxColumn: false,
       columns: [
         for (final header in data.header)
