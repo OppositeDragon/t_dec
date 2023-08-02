@@ -4,9 +4,11 @@ import 'package:t_dec_optimized/constants/numeric.dart';
 import 'package:t_dec_optimized/widgets/fm_leaf/fm_switch.dart';
 
 import '../controllers/maestro_empleados_controller.dart';
+import '../models/data_datatable.dart';
 import '../models/layout_description.dart';
 import '../widgets/fm2/fm2_layout.dart';
 import '../widgets/fm3/fm3_stack_card.dart';
+import '../widgets/fm_leaf/fm_data_table.dart';
 import '../widgets/fm_leaf/fm_text_field.dart';
 
 class MaestroEmpleadosPage extends ConsumerStatefulWidget {
@@ -167,7 +169,7 @@ class _MaestraEmpleadosPageState extends ConsumerState<MaestroEmpleadosPage> {
                                   },
                                 ),
                                 DataCell(
-                                  Text(empleados[i].telCelular ?? empleados[i].telConvencional ?? ''),
+                                  Text(empleados[i].telCelular),
                                   onTap: () {
                                     setState(() {
                                       for (int j = 0; j < empleados.length; j++) {
@@ -353,7 +355,7 @@ class _MaestraEmpleadosPageState extends ConsumerState<MaestroEmpleadosPage> {
                                           (const FmSwitch(
                                               onChanged: null,
                                               primaryText: 'Estado',
-                                              secondaryText: 'inacttivo',
+                                              secondaryText: 'inactivo',
                                               value: true)),
                                         ]
                                       ),
@@ -392,7 +394,7 @@ class _MaestraEmpleadosPageState extends ConsumerState<MaestroEmpleadosPage> {
                                 child: Fm2Layout(
                                     layoutDescription: OnlyRow(children: [
                                   (
-                                    7,
+                                    11,
                                     Fm3StackCard(
                                         title: 'Enlaces',
                                         child: Fm2Layout(
@@ -403,7 +405,7 @@ class _MaestraEmpleadosPageState extends ConsumerState<MaestroEmpleadosPage> {
                                         ])))
                                   ),
                                   (
-                                    3,
+                                    5,
                                     Fm3StackCard(
                                       title: 'Foto',
                                       actions: [
@@ -537,17 +539,16 @@ class _MaestraEmpleadosPageState extends ConsumerState<MaestroEmpleadosPage> {
                                         1,
                                         [
                                           SingleChildScrollView(
-                                              child: DataTable(columns: const [
-                                            DataColumn(label: Text('Relacion')),
-                                            DataColumn(label: Text('Nombres')),
-                                            DataColumn(label: Text('Edad'))
-                                          ], rows: const [
-                                            DataRow(cells: [
-                                              DataCell(Text('Hijo')),
-                                              DataCell(Text('Juan Perez')),
-                                              DataCell(Text('12'))
-                                            ])
-                                          ]))
+                                            child: FmDataTable(
+                                                data: DTData(header: [
+                                              const DTHeader(label: 'Relacion'),
+                                              const DTHeader(label: 'Nombres'),
+                                              const DTHeader(label: 'Edad', numeric: true),
+                                            ], rows: [
+                                              const DTRow(cells: ['Hijo', 'Juan Perez', '12']),
+                                              const DTRow(cells: ['Padre', 'Ibarra Velasco', '69']),
+                                            ])),
+                                          )
                                         ]
                                       ),
                                     ]))),
@@ -698,17 +699,16 @@ class _MaestraEmpleadosPageState extends ConsumerState<MaestroEmpleadosPage> {
                                         1,
                                         [
                                           SingleChildScrollView(
-                                              child: DataTable(columns: const [
-                                            DataColumn(label: Text('Entradas')),
-                                            DataColumn(label: Text('Salidas')),
-                                            DataColumn(label: Text('Notas'))
-                                          ], rows: const [
-                                            DataRow(cells: [
-                                              DataCell(Text('xyz	')),
-                                              DataCell(Text('abc')),
-                                              DataCell(Text('abc xyz'))
-                                            ])
-                                          ]))
+                                            child: FmDataTable(
+                                                data: DTData(header: [
+                                              const DTHeader(label: 'Entradas'),
+                                              const DTHeader(label: 'Salidas'),
+                                              const DTHeader(label: 'Notas', numeric: true),
+                                            ], rows: [
+                                              const DTRow(cells: ['xyz', '', 'abc']),
+                                              const DTRow(cells: ['', 'abc', 'xyz']),
+                                            ])),
+                                          )
                                         ]
                                       ),
                                     ]))),
@@ -772,23 +772,18 @@ class _MaestraEmpleadosPageState extends ConsumerState<MaestroEmpleadosPage> {
                                         3,
                                         [
                                           SingleChildScrollView(
-                                              child: DataTable(columns: const [
-                                            DataColumn(label: Text('Periodo')),
-                                            DataColumn(label: Text('Desde')),
-                                            DataColumn(label: Text('Hasta')),
-                                            DataColumn(label: Text('Dias Ingreso')),
-                                            DataColumn(label: Text('Dias Tomados')),
-                                            DataColumn(label: Text('Pagadas')),
-                                          ], rows: const [
-                                            DataRow(cells: [
-                                              DataCell(Text('xyz	')),
-                                              DataCell(Text('abc')),
-                                              DataCell(Text('abc xyz')),
-                                              DataCell(Text('abc xyz aoe')),
-                                              DataCell(Text('abc xyz')),
-                                              DataCell(Text('abc xyz')),
-                                            ])
+                                              child: FmDataTable(
+                                                  data: DTData(header: [
+                                            const DTHeader(label: 'Periodo'),
+                                            const DTHeader(label: 'Desde'),
+                                            const DTHeader(label: 'Hasta'),
+                                            const DTHeader(label: 'Dias ing.', numeric: true),
+                                            const DTHeader(label: 'Dias tomados', numeric: true),
+                                            const DTHeader(label: 'Pagadas', numeric: true),
+                                          ], rows: [
+                                            const DTRow(cells: ['junio-23', '10-12-23', '10-12-23', '3', '3', '3']), 
                                           ]))
+																							)
                                         ]
                                       ),
                                     ]))),

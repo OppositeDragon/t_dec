@@ -4,9 +4,12 @@ import 'package:t_dec_optimized/models/data_datatable.dart';
 
 class FmDataTable extends StatelessWidget {
   const FmDataTable({required this.data, super.key});
-  final DataDataTable data;
+  final DTData data;
   @override
   Widget build(BuildContext context) {
+    if (data.rows.any((row) => row.cells.length != data.header.length)) {
+      return const Text('Error: `header.lenght` and `cells.lenght` on each row, mismatch');
+    }
     return DataTable(
       headingTextStyle: const TextStyle(fontSize: xl, fontWeight: FontWeight.bold),
       dataTextStyle: const TextStyle(fontSize: xl),

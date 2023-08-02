@@ -4,28 +4,27 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'data_datatable.freezed.dart';
 
 @freezed
-class DataDataTable with _$DataDataTable {
-  @Assert('header.length == rows[0].cells.length', 'header.length must be equal to cells.length')
-  factory DataDataTable({
-    required List<DataTableHeader> header,
-    required List<DataTableRow> rows,
-  }) = _DataDataTable;
-}
-
-@freezed
-class DataTableHeader with _$DataTableHeader {
-  const factory DataTableHeader({
+class DTHeader with _$DTHeader {
+  const factory DTHeader({
     required String label,
     @Default(false) bool numeric,
     @Default(null) String? tooltip,
-  }) = _DataTableHeader;
+  }) = _DTHeader;
 }
 
 @freezed
-class DataTableRow with _$DataTableRow {
-  const factory DataTableRow({
+class DTRow with _$DTRow {
+  const factory DTRow({
     required List<String> cells,
     @Default(null) VoidCallback? onTap,
     @Default(null) VoidCallback? onDoubleTap,
-  }) = _DataTableRow;
+  }) = _DTRow;
+}
+
+@freezed
+class DTData with _$DTData {
+  factory DTData({
+    required List<DTHeader> header,
+    required List<DTRow> rows,
+  }) = _DTData;
 }

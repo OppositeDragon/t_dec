@@ -15,184 +15,28 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$DataDataTable {
-  List<DataTableHeader> get header => throw _privateConstructorUsedError;
-  List<DataTableRow> get rows => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $DataDataTableCopyWith<DataDataTable> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $DataDataTableCopyWith<$Res> {
-  factory $DataDataTableCopyWith(
-          DataDataTable value, $Res Function(DataDataTable) then) =
-      _$DataDataTableCopyWithImpl<$Res, DataDataTable>;
-  @useResult
-  $Res call({List<DataTableHeader> header, List<DataTableRow> rows});
-}
-
-/// @nodoc
-class _$DataDataTableCopyWithImpl<$Res, $Val extends DataDataTable>
-    implements $DataDataTableCopyWith<$Res> {
-  _$DataDataTableCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? header = null,
-    Object? rows = null,
-  }) {
-    return _then(_value.copyWith(
-      header: null == header
-          ? _value.header
-          : header // ignore: cast_nullable_to_non_nullable
-              as List<DataTableHeader>,
-      rows: null == rows
-          ? _value.rows
-          : rows // ignore: cast_nullable_to_non_nullable
-              as List<DataTableRow>,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$_DataDataTableCopyWith<$Res>
-    implements $DataDataTableCopyWith<$Res> {
-  factory _$$_DataDataTableCopyWith(
-          _$_DataDataTable value, $Res Function(_$_DataDataTable) then) =
-      __$$_DataDataTableCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({List<DataTableHeader> header, List<DataTableRow> rows});
-}
-
-/// @nodoc
-class __$$_DataDataTableCopyWithImpl<$Res>
-    extends _$DataDataTableCopyWithImpl<$Res, _$_DataDataTable>
-    implements _$$_DataDataTableCopyWith<$Res> {
-  __$$_DataDataTableCopyWithImpl(
-      _$_DataDataTable _value, $Res Function(_$_DataDataTable) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? header = null,
-    Object? rows = null,
-  }) {
-    return _then(_$_DataDataTable(
-      header: null == header
-          ? _value._header
-          : header // ignore: cast_nullable_to_non_nullable
-              as List<DataTableHeader>,
-      rows: null == rows
-          ? _value._rows
-          : rows // ignore: cast_nullable_to_non_nullable
-              as List<DataTableRow>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_DataDataTable implements _DataDataTable {
-  _$_DataDataTable(
-      {required final List<DataTableHeader> header,
-      required final List<DataTableRow> rows})
-      : assert(header.length == rows[0].cells.length,
-            'header.length must be equal to cells.length'),
-        _header = header,
-        _rows = rows;
-
-  final List<DataTableHeader> _header;
-  @override
-  List<DataTableHeader> get header {
-    if (_header is EqualUnmodifiableListView) return _header;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_header);
-  }
-
-  final List<DataTableRow> _rows;
-  @override
-  List<DataTableRow> get rows {
-    if (_rows is EqualUnmodifiableListView) return _rows;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_rows);
-  }
-
-  @override
-  String toString() {
-    return 'DataDataTable(header: $header, rows: $rows)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_DataDataTable &&
-            const DeepCollectionEquality().equals(other._header, _header) &&
-            const DeepCollectionEquality().equals(other._rows, _rows));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_header),
-      const DeepCollectionEquality().hash(_rows));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_DataDataTableCopyWith<_$_DataDataTable> get copyWith =>
-      __$$_DataDataTableCopyWithImpl<_$_DataDataTable>(this, _$identity);
-}
-
-abstract class _DataDataTable implements DataDataTable {
-  factory _DataDataTable(
-      {required final List<DataTableHeader> header,
-      required final List<DataTableRow> rows}) = _$_DataDataTable;
-
-  @override
-  List<DataTableHeader> get header;
-  @override
-  List<DataTableRow> get rows;
-  @override
-  @JsonKey(ignore: true)
-  _$$_DataDataTableCopyWith<_$_DataDataTable> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-mixin _$DataTableHeader {
+mixin _$DTHeader {
   String get label => throw _privateConstructorUsedError;
   bool get numeric => throw _privateConstructorUsedError;
   String? get tooltip => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $DataTableHeaderCopyWith<DataTableHeader> get copyWith =>
+  $DTHeaderCopyWith<DTHeader> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $DataTableHeaderCopyWith<$Res> {
-  factory $DataTableHeaderCopyWith(
-          DataTableHeader value, $Res Function(DataTableHeader) then) =
-      _$DataTableHeaderCopyWithImpl<$Res, DataTableHeader>;
+abstract class $DTHeaderCopyWith<$Res> {
+  factory $DTHeaderCopyWith(DTHeader value, $Res Function(DTHeader) then) =
+      _$DTHeaderCopyWithImpl<$Res, DTHeader>;
   @useResult
   $Res call({String label, bool numeric, String? tooltip});
 }
 
 /// @nodoc
-class _$DataTableHeaderCopyWithImpl<$Res, $Val extends DataTableHeader>
-    implements $DataTableHeaderCopyWith<$Res> {
-  _$DataTableHeaderCopyWithImpl(this._value, this._then);
+class _$DTHeaderCopyWithImpl<$Res, $Val extends DTHeader>
+    implements $DTHeaderCopyWith<$Res> {
+  _$DTHeaderCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -224,22 +68,21 @@ class _$DataTableHeaderCopyWithImpl<$Res, $Val extends DataTableHeader>
 }
 
 /// @nodoc
-abstract class _$$_DataTableHeaderCopyWith<$Res>
-    implements $DataTableHeaderCopyWith<$Res> {
-  factory _$$_DataTableHeaderCopyWith(
-          _$_DataTableHeader value, $Res Function(_$_DataTableHeader) then) =
-      __$$_DataTableHeaderCopyWithImpl<$Res>;
+abstract class _$$_DTHeaderCopyWith<$Res> implements $DTHeaderCopyWith<$Res> {
+  factory _$$_DTHeaderCopyWith(
+          _$_DTHeader value, $Res Function(_$_DTHeader) then) =
+      __$$_DTHeaderCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String label, bool numeric, String? tooltip});
 }
 
 /// @nodoc
-class __$$_DataTableHeaderCopyWithImpl<$Res>
-    extends _$DataTableHeaderCopyWithImpl<$Res, _$_DataTableHeader>
-    implements _$$_DataTableHeaderCopyWith<$Res> {
-  __$$_DataTableHeaderCopyWithImpl(
-      _$_DataTableHeader _value, $Res Function(_$_DataTableHeader) _then)
+class __$$_DTHeaderCopyWithImpl<$Res>
+    extends _$DTHeaderCopyWithImpl<$Res, _$_DTHeader>
+    implements _$$_DTHeaderCopyWith<$Res> {
+  __$$_DTHeaderCopyWithImpl(
+      _$_DTHeader _value, $Res Function(_$_DTHeader) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -249,7 +92,7 @@ class __$$_DataTableHeaderCopyWithImpl<$Res>
     Object? numeric = null,
     Object? tooltip = freezed,
   }) {
-    return _then(_$_DataTableHeader(
+    return _then(_$_DTHeader(
       label: null == label
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
@@ -268,8 +111,8 @@ class __$$_DataTableHeaderCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_DataTableHeader implements _DataTableHeader {
-  const _$_DataTableHeader(
+class _$_DTHeader implements _DTHeader {
+  const _$_DTHeader(
       {required this.label, this.numeric = false, this.tooltip = null});
 
   @override
@@ -283,14 +126,14 @@ class _$_DataTableHeader implements _DataTableHeader {
 
   @override
   String toString() {
-    return 'DataTableHeader(label: $label, numeric: $numeric, tooltip: $tooltip)';
+    return 'DTHeader(label: $label, numeric: $numeric, tooltip: $tooltip)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DataTableHeader &&
+            other is _$_DTHeader &&
             (identical(other.label, label) || other.label == label) &&
             (identical(other.numeric, numeric) || other.numeric == numeric) &&
             (identical(other.tooltip, tooltip) || other.tooltip == tooltip));
@@ -302,15 +145,15 @@ class _$_DataTableHeader implements _DataTableHeader {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DataTableHeaderCopyWith<_$_DataTableHeader> get copyWith =>
-      __$$_DataTableHeaderCopyWithImpl<_$_DataTableHeader>(this, _$identity);
+  _$$_DTHeaderCopyWith<_$_DTHeader> get copyWith =>
+      __$$_DTHeaderCopyWithImpl<_$_DTHeader>(this, _$identity);
 }
 
-abstract class _DataTableHeader implements DataTableHeader {
-  const factory _DataTableHeader(
+abstract class _DTHeader implements DTHeader {
+  const factory _DTHeader(
       {required final String label,
       final bool numeric,
-      final String? tooltip}) = _$_DataTableHeader;
+      final String? tooltip}) = _$_DTHeader;
 
   @override
   String get label;
@@ -320,35 +163,33 @@ abstract class _DataTableHeader implements DataTableHeader {
   String? get tooltip;
   @override
   @JsonKey(ignore: true)
-  _$$_DataTableHeaderCopyWith<_$_DataTableHeader> get copyWith =>
+  _$$_DTHeaderCopyWith<_$_DTHeader> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$DataTableRow {
+mixin _$DTRow {
   List<String> get cells => throw _privateConstructorUsedError;
   VoidCallback? get onTap => throw _privateConstructorUsedError;
   VoidCallback? get onDoubleTap => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $DataTableRowCopyWith<DataTableRow> get copyWith =>
-      throw _privateConstructorUsedError;
+  $DTRowCopyWith<DTRow> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $DataTableRowCopyWith<$Res> {
-  factory $DataTableRowCopyWith(
-          DataTableRow value, $Res Function(DataTableRow) then) =
-      _$DataTableRowCopyWithImpl<$Res, DataTableRow>;
+abstract class $DTRowCopyWith<$Res> {
+  factory $DTRowCopyWith(DTRow value, $Res Function(DTRow) then) =
+      _$DTRowCopyWithImpl<$Res, DTRow>;
   @useResult
   $Res call(
       {List<String> cells, VoidCallback? onTap, VoidCallback? onDoubleTap});
 }
 
 /// @nodoc
-class _$DataTableRowCopyWithImpl<$Res, $Val extends DataTableRow>
-    implements $DataTableRowCopyWith<$Res> {
-  _$DataTableRowCopyWithImpl(this._value, this._then);
+class _$DTRowCopyWithImpl<$Res, $Val extends DTRow>
+    implements $DTRowCopyWith<$Res> {
+  _$DTRowCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -380,11 +221,9 @@ class _$DataTableRowCopyWithImpl<$Res, $Val extends DataTableRow>
 }
 
 /// @nodoc
-abstract class _$$_DataTableRowCopyWith<$Res>
-    implements $DataTableRowCopyWith<$Res> {
-  factory _$$_DataTableRowCopyWith(
-          _$_DataTableRow value, $Res Function(_$_DataTableRow) then) =
-      __$$_DataTableRowCopyWithImpl<$Res>;
+abstract class _$$_DTRowCopyWith<$Res> implements $DTRowCopyWith<$Res> {
+  factory _$$_DTRowCopyWith(_$_DTRow value, $Res Function(_$_DTRow) then) =
+      __$$_DTRowCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -392,11 +231,9 @@ abstract class _$$_DataTableRowCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_DataTableRowCopyWithImpl<$Res>
-    extends _$DataTableRowCopyWithImpl<$Res, _$_DataTableRow>
-    implements _$$_DataTableRowCopyWith<$Res> {
-  __$$_DataTableRowCopyWithImpl(
-      _$_DataTableRow _value, $Res Function(_$_DataTableRow) _then)
+class __$$_DTRowCopyWithImpl<$Res> extends _$DTRowCopyWithImpl<$Res, _$_DTRow>
+    implements _$$_DTRowCopyWith<$Res> {
+  __$$_DTRowCopyWithImpl(_$_DTRow _value, $Res Function(_$_DTRow) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -406,7 +243,7 @@ class __$$_DataTableRowCopyWithImpl<$Res>
     Object? onTap = freezed,
     Object? onDoubleTap = freezed,
   }) {
-    return _then(_$_DataTableRow(
+    return _then(_$_DTRow(
       cells: null == cells
           ? _value._cells
           : cells // ignore: cast_nullable_to_non_nullable
@@ -425,8 +262,8 @@ class __$$_DataTableRowCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_DataTableRow implements _DataTableRow {
-  const _$_DataTableRow(
+class _$_DTRow implements _DTRow {
+  const _$_DTRow(
       {required final List<String> cells,
       this.onTap = null,
       this.onDoubleTap = null})
@@ -449,14 +286,14 @@ class _$_DataTableRow implements _DataTableRow {
 
   @override
   String toString() {
-    return 'DataTableRow(cells: $cells, onTap: $onTap, onDoubleTap: $onDoubleTap)';
+    return 'DTRow(cells: $cells, onTap: $onTap, onDoubleTap: $onDoubleTap)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DataTableRow &&
+            other is _$_DTRow &&
             const DeepCollectionEquality().equals(other._cells, _cells) &&
             (identical(other.onTap, onTap) || other.onTap == onTap) &&
             (identical(other.onDoubleTap, onDoubleTap) ||
@@ -470,15 +307,15 @@ class _$_DataTableRow implements _DataTableRow {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DataTableRowCopyWith<_$_DataTableRow> get copyWith =>
-      __$$_DataTableRowCopyWithImpl<_$_DataTableRow>(this, _$identity);
+  _$$_DTRowCopyWith<_$_DTRow> get copyWith =>
+      __$$_DTRowCopyWithImpl<_$_DTRow>(this, _$identity);
 }
 
-abstract class _DataTableRow implements DataTableRow {
-  const factory _DataTableRow(
+abstract class _DTRow implements DTRow {
+  const factory _DTRow(
       {required final List<String> cells,
       final VoidCallback? onTap,
-      final VoidCallback? onDoubleTap}) = _$_DataTableRow;
+      final VoidCallback? onDoubleTap}) = _$_DTRow;
 
   @override
   List<String> get cells;
@@ -488,6 +325,153 @@ abstract class _DataTableRow implements DataTableRow {
   VoidCallback? get onDoubleTap;
   @override
   @JsonKey(ignore: true)
-  _$$_DataTableRowCopyWith<_$_DataTableRow> get copyWith =>
+  _$$_DTRowCopyWith<_$_DTRow> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$DTData {
+  List<DTHeader> get header => throw _privateConstructorUsedError;
+  List<DTRow> get rows => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $DTDataCopyWith<DTData> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $DTDataCopyWith<$Res> {
+  factory $DTDataCopyWith(DTData value, $Res Function(DTData) then) =
+      _$DTDataCopyWithImpl<$Res, DTData>;
+  @useResult
+  $Res call({List<DTHeader> header, List<DTRow> rows});
+}
+
+/// @nodoc
+class _$DTDataCopyWithImpl<$Res, $Val extends DTData>
+    implements $DTDataCopyWith<$Res> {
+  _$DTDataCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? header = null,
+    Object? rows = null,
+  }) {
+    return _then(_value.copyWith(
+      header: null == header
+          ? _value.header
+          : header // ignore: cast_nullable_to_non_nullable
+              as List<DTHeader>,
+      rows: null == rows
+          ? _value.rows
+          : rows // ignore: cast_nullable_to_non_nullable
+              as List<DTRow>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_DTDataCopyWith<$Res> implements $DTDataCopyWith<$Res> {
+  factory _$$_DTDataCopyWith(_$_DTData value, $Res Function(_$_DTData) then) =
+      __$$_DTDataCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<DTHeader> header, List<DTRow> rows});
+}
+
+/// @nodoc
+class __$$_DTDataCopyWithImpl<$Res>
+    extends _$DTDataCopyWithImpl<$Res, _$_DTData>
+    implements _$$_DTDataCopyWith<$Res> {
+  __$$_DTDataCopyWithImpl(_$_DTData _value, $Res Function(_$_DTData) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? header = null,
+    Object? rows = null,
+  }) {
+    return _then(_$_DTData(
+      header: null == header
+          ? _value._header
+          : header // ignore: cast_nullable_to_non_nullable
+              as List<DTHeader>,
+      rows: null == rows
+          ? _value._rows
+          : rows // ignore: cast_nullable_to_non_nullable
+              as List<DTRow>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_DTData implements _DTData {
+  _$_DTData(
+      {required final List<DTHeader> header, required final List<DTRow> rows})
+      : _header = header,
+        _rows = rows;
+
+  final List<DTHeader> _header;
+  @override
+  List<DTHeader> get header {
+    if (_header is EqualUnmodifiableListView) return _header;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_header);
+  }
+
+  final List<DTRow> _rows;
+  @override
+  List<DTRow> get rows {
+    if (_rows is EqualUnmodifiableListView) return _rows;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_rows);
+  }
+
+  @override
+  String toString() {
+    return 'DTData(header: $header, rows: $rows)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_DTData &&
+            const DeepCollectionEquality().equals(other._header, _header) &&
+            const DeepCollectionEquality().equals(other._rows, _rows));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_header),
+      const DeepCollectionEquality().hash(_rows));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_DTDataCopyWith<_$_DTData> get copyWith =>
+      __$$_DTDataCopyWithImpl<_$_DTData>(this, _$identity);
+}
+
+abstract class _DTData implements DTData {
+  factory _DTData(
+      {required final List<DTHeader> header,
+      required final List<DTRow> rows}) = _$_DTData;
+
+  @override
+  List<DTHeader> get header;
+  @override
+  List<DTRow> get rows;
+  @override
+  @JsonKey(ignore: true)
+  _$$_DTDataCopyWith<_$_DTData> get copyWith =>
       throw _privateConstructorUsedError;
 }
