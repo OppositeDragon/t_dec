@@ -112,14 +112,25 @@ class _MaestraEmpleadosPageState extends ConsumerState<MaestroEmpleadosPage> {
                         const DTHeader(label: 'Estado', tooltip: 'Estado cliente'),
                       ], rows: [
                         for (int i = 0; i < empleados.length; i++)
-                          DTRow(cells: [
-                            empleados[i].identificacion,
-                            empleados[i].nombres,
-                            empleados[i].telCelular,
-                            empleados[i].correo,
-                            empleados[i].direccion,
-                            empleados[i].estado ? '✓' : 'x',
-                          ]),
+                          DTRow(
+                              selected: empleados[i].selected,
+                              onDoubleTap: () {
+                                setState(() {
+                                  identificacion = empleados[i].identificacion;
+                                  animateToPage(1);
+                                });
+                              },
+                              onTap: () {
+                                ref.read(empleadosControllerProvider.notifier).setSelectedRow(i);
+                              },
+                              cells: [
+                                empleados[i].identificacion,
+                                empleados[i].nombres,
+                                empleados[i].telCelular,
+                                empleados[i].correo,
+                                empleados[i].direccion,
+                                empleados[i].estado ? '✓' : 'x',
+                              ]),
                       ])),
                     ),
                   );

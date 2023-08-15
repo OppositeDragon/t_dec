@@ -172,6 +172,7 @@ mixin _$DTRow {
   List<String> get cells => throw _privateConstructorUsedError;
   VoidCallback? get onTap => throw _privateConstructorUsedError;
   VoidCallback? get onDoubleTap => throw _privateConstructorUsedError;
+  bool get selected => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DTRowCopyWith<DTRow> get copyWith => throw _privateConstructorUsedError;
@@ -183,7 +184,10 @@ abstract class $DTRowCopyWith<$Res> {
       _$DTRowCopyWithImpl<$Res, DTRow>;
   @useResult
   $Res call(
-      {List<String> cells, VoidCallback? onTap, VoidCallback? onDoubleTap});
+      {List<String> cells,
+      VoidCallback? onTap,
+      VoidCallback? onDoubleTap,
+      bool selected});
 }
 
 /// @nodoc
@@ -202,6 +206,7 @@ class _$DTRowCopyWithImpl<$Res, $Val extends DTRow>
     Object? cells = null,
     Object? onTap = freezed,
     Object? onDoubleTap = freezed,
+    Object? selected = null,
   }) {
     return _then(_value.copyWith(
       cells: null == cells
@@ -216,6 +221,10 @@ class _$DTRowCopyWithImpl<$Res, $Val extends DTRow>
           ? _value.onDoubleTap
           : onDoubleTap // ignore: cast_nullable_to_non_nullable
               as VoidCallback?,
+      selected: null == selected
+          ? _value.selected
+          : selected // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -227,7 +236,10 @@ abstract class _$$_DTRowCopyWith<$Res> implements $DTRowCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {List<String> cells, VoidCallback? onTap, VoidCallback? onDoubleTap});
+      {List<String> cells,
+      VoidCallback? onTap,
+      VoidCallback? onDoubleTap,
+      bool selected});
 }
 
 /// @nodoc
@@ -242,6 +254,7 @@ class __$$_DTRowCopyWithImpl<$Res> extends _$DTRowCopyWithImpl<$Res, _$_DTRow>
     Object? cells = null,
     Object? onTap = freezed,
     Object? onDoubleTap = freezed,
+    Object? selected = null,
   }) {
     return _then(_$_DTRow(
       cells: null == cells
@@ -256,6 +269,10 @@ class __$$_DTRowCopyWithImpl<$Res> extends _$DTRowCopyWithImpl<$Res, _$_DTRow>
           ? _value.onDoubleTap
           : onDoubleTap // ignore: cast_nullable_to_non_nullable
               as VoidCallback?,
+      selected: null == selected
+          ? _value.selected
+          : selected // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -266,7 +283,8 @@ class _$_DTRow implements _DTRow {
   const _$_DTRow(
       {required final List<String> cells,
       this.onTap = null,
-      this.onDoubleTap = null})
+      this.onDoubleTap = null,
+      this.selected = false})
       : _cells = cells;
 
   final List<String> _cells;
@@ -283,10 +301,13 @@ class _$_DTRow implements _DTRow {
   @override
   @JsonKey()
   final VoidCallback? onDoubleTap;
+  @override
+  @JsonKey()
+  final bool selected;
 
   @override
   String toString() {
-    return 'DTRow(cells: $cells, onTap: $onTap, onDoubleTap: $onDoubleTap)';
+    return 'DTRow(cells: $cells, onTap: $onTap, onDoubleTap: $onDoubleTap, selected: $selected)';
   }
 
   @override
@@ -297,12 +318,18 @@ class _$_DTRow implements _DTRow {
             const DeepCollectionEquality().equals(other._cells, _cells) &&
             (identical(other.onTap, onTap) || other.onTap == onTap) &&
             (identical(other.onDoubleTap, onDoubleTap) ||
-                other.onDoubleTap == onDoubleTap));
+                other.onDoubleTap == onDoubleTap) &&
+            (identical(other.selected, selected) ||
+                other.selected == selected));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_cells), onTap, onDoubleTap);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_cells),
+      onTap,
+      onDoubleTap,
+      selected);
 
   @JsonKey(ignore: true)
   @override
@@ -315,7 +342,8 @@ abstract class _DTRow implements DTRow {
   const factory _DTRow(
       {required final List<String> cells,
       final VoidCallback? onTap,
-      final VoidCallback? onDoubleTap}) = _$_DTRow;
+      final VoidCallback? onDoubleTap,
+      final bool selected}) = _$_DTRow;
 
   @override
   List<String> get cells;
@@ -323,6 +351,8 @@ abstract class _DTRow implements DTRow {
   VoidCallback? get onTap;
   @override
   VoidCallback? get onDoubleTap;
+  @override
+  bool get selected;
   @override
   @JsonKey(ignore: true)
   _$$_DTRowCopyWith<_$_DTRow> get copyWith =>

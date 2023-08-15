@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:t_dec_optimized/constants/numeric.dart';
 import 'package:t_dec_optimized/models/data_datatable.dart';
 
+
 class FmDataTable extends StatelessWidget {
   const FmDataTable({required this.data, super.key});
   final DTData data;
@@ -26,6 +27,7 @@ class FmDataTable extends StatelessWidget {
       rows: [
         for (final row in data.rows)
           DataRow(
+            selected: row.selected,
             cells: [
               for (final cell in row.cells)
                 DataCell(

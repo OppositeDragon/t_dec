@@ -48,4 +48,11 @@ class EmpleadosController extends _$EmpleadosController {
     ];
     return empleados;
   }
+
+  setSelectedRow(int i) {
+    state = [
+      for (final empleado in state)
+        if (empleado == state[i]) empleado.copyWith(selected: true) else empleado.copyWith(selected: false)
+    ];
+  }
 }

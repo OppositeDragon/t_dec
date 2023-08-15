@@ -18,6 +18,7 @@ class DTRow with _$DTRow {
     required List<String> cells,
     @Default(null) VoidCallback? onTap,
     @Default(null) VoidCallback? onDoubleTap,
+    @Default(false) bool selected,
   }) = _DTRow;
 }
 

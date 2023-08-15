@@ -68,7 +68,7 @@ final submodulesControllerProvider =
 
 typedef _$SubmodulesController = AutoDisposeNotifier<SubmodulesState>;
 String _$mainContentControllerHash() =>
-    r'22c8052d30411ac2bb9c89feeb4c9feb34f693ce';
+    r'5c0c901b7216661c0782c87ada778bcdc0142bde';
 
 /// See also [MainContentController].
 @ProviderFor(MainContentController)
@@ -84,4 +84,5 @@ final mainContentControllerProvider = AutoDisposeNotifierProvider<
 );
 
 typedef _$MainContentController = AutoDisposeNotifier<MainContentState>;
-// ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions
+// ignore_for_file: type=lint
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member
